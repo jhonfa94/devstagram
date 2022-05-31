@@ -15,8 +15,8 @@
                 <h1 class="text-3xl font-black">Devstagram</h1>
 
                 <nav class="flex grap-2 items-center">
-                    <a class="font-bold uppercase text-gray-600 text-sm" href="#">Login</a>
-                    <a class="font-bold uppercase text-gray-600 text-sm" href="#">Crear cuenta</a>
+                    <a class="font-bold uppercase text-gray-600 text-sm mr-4" href="#">Login</a>
+                    <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register.index') }}">Crear cuenta</a>
                 </nav>
 
             </div>
@@ -27,7 +27,7 @@
             @yield('contenido')
         </main>
 
-        <footer class="text-center p-5 text-gray-500 font-bold uppercase">
+        <footer class="mt-10 text-center p-5 text-gray-500 font-bold uppercase">
             &copy; Devstagram - Todos los derechos reservados
             {{ date('Y') }}
         </footer>
