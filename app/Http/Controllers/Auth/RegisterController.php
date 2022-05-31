@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RegisterController extends Controller
 {
@@ -19,8 +21,16 @@ class RegisterController extends Controller
             'name' => 'required|string|min:5|max:30',
             'username' => 'required|string|min:3|max:20|unique:users',
             'email' => 'required|string|email|max:80|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-
+            'password' => 'required|string|min:8|confirmed',
         ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'username' => Str::slug($request->username),
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+        // dd($user);
+        return redirect()->route('post.index')->with('success', 'User created successfully');
     }
 }
