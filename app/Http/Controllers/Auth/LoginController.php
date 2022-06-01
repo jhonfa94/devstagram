@@ -22,10 +22,10 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (!auth()->attempt($request->only('email', 'password'),$request->remember)) {
+        if (!auth()->attempt($request->only('email', 'password'), $request->remember)) {
             return back()->with('mensaje', 'Credenciales incorrectas');
         }
         // dd('Autenticando...');
-        return redirect()->route('post.index');
+        return redirect()->route('post.index', auth()->user()->username);
     }
 }

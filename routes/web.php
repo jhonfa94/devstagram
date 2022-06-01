@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +32,8 @@ Route::post('/login', [LoginController::class,'store'])->name('login.store');
 Route::post('/logout', [LogoutController::class,'store'])->name('logout');
 
 Route::get('/{user:username}', [PostController::class,'index'])->name('post.index');
+Route::get('/post/create', [PostController::class,'create'])->name('post.create');
+Route::post('/posts', [PostController::class,'store'])->name('post.store');
+
+
+Route::post('/imagenes', [ImageController::class,'store'])->name('imagenes.store');
