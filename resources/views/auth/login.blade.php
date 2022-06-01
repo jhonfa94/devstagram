@@ -14,7 +14,7 @@
         <div class="md:w-6/12 bg-white p-6 rounded-lg shadow-xl">
             <form action="{{ route('login.store') }}" method="post">
                 @csrf
-                @if(session('mensaje'))
+                @if (session('mensaje'))
                     <p class="bg-red-600 text-white my-2 rounded-lg p-2">{{ session('mensaje') }}</p>
                 @endif
                 <div class="mb-5">
@@ -36,9 +36,16 @@
                         class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror">
                 </div>
 
+                <div class="mb-5">
+                    <input type="checkbox" name="remember" id="remember"> <label for="remember"
+                        class="text-gray-500 font-bold text-sm">Mantener mi sesión abierta</label>
+                </div>
+
                 <input type="submit"
                     class="bg-sky-600 hover:bg-sky-700 transition-colors cursos-pointer font-bold w-full p-3 text-white rounded-lg"
                     value="Iniciar sesión">
+
+
             </form>
 
         </div>
