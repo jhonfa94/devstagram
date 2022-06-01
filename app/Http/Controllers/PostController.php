@@ -42,9 +42,22 @@ class PostController extends Controller
         ]);
 
         # OTRA FORMA DE GUARDAR EL REGISTRO
-        
+        // $post = new Post;
+        // $post->titulo = $request->titulo;
+        // $post->descripcion = $request->descripcion;
+        // $post->imagen = $request->imagen;
+        // $post->user_id = auth()->user()->id;
+        // $post->save();
+
+        # OTRA FORMA
+        // $request->user()->post()->create([
+        //     'titulo' =>  $request->titulo,
+        //     'descripcion' => $request->descripcion,
+        //     'imagen' => $request->imagen,
+        //     'user_id' => auth()->user()->id
+        // ]);
+
 
         return redirect()->route('post.index', auth()->user()->username);
-
     }
 }
