@@ -60,4 +60,9 @@ class PostController extends Controller
 
         return redirect()->route('post.index', auth()->user()->username);
     }
+
+    public function show(User $user, Post $post)
+    {
+        return view('post.show', compact('post'));
+    }
 }

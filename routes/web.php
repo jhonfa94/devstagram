@@ -23,17 +23,18 @@ Route::get('/', function () {
     return view('principal');
 });
 
-Route::get('/register', [RegisterController::class,'index'])->name('register.index');
-Route::post('/register', [RegisterController::class,'store'])->name('register.store');
+Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 
-Route::get('/login', [LoginController::class,'index'])->name('login');
-Route::post('/login', [LoginController::class,'store'])->name('login.store');
-Route::post('/logout', [LogoutController::class,'store'])->name('logout');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::get('/{user:username}', [PostController::class,'index'])->name('post.index');
-Route::get('/post/create', [PostController::class,'create'])->name('post.create');
-Route::post('/posts', [PostController::class,'store'])->name('post.store');
+Route::get('/{user:username}', [PostController::class, 'index'])->name('post.index');
+Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
+Route::post('/posts', [PostController::class, 'store'])->name('post.store');
+Route::get('/{user:username}/post/{post}', [PostController::class, 'show'])->name('post.show');
 
 
-Route::post('/imagenes', [ImageController::class,'store'])->name('imagenes.store');
+Route::post('/imagenes', [ImageController::class, 'store'])->name('imagenes.store');
