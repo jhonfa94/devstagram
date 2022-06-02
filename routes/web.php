@@ -36,6 +36,7 @@ Route::get('/{user:username}', [PostController::class, 'index'])->name('post.ind
 Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
 Route::post('/posts', [PostController::class, 'store'])->name('post.store');
 Route::get('/{user:username}/post/{post}', [PostController::class, 'show'])->name('post.show');
+Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
 
 
 Route::post('/{user:username}/post/{post}', [CommentController::class, 'store'])->name('comment.store');

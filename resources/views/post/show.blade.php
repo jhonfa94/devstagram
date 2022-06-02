@@ -21,6 +21,17 @@
                     {{ $post->descripcion }}
                 </p>
             </div>
+
+            @auth()
+                @if ($post->user_id == auth()->user()->id)
+                    <form action="{{ route('post.destroy', $post) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Eliminar publicación"
+                            class="bg-red-500 hover:bg-red-600 text-white font-bold p-2 px-4 rounded mt-4 cursor-pointer">
+                    </form>
+                @endif
+            @endauth
         </div>
 
         <div class="md:w-1/2 p-5">
@@ -30,7 +41,7 @@
                         Agrega un comentario
                     </p>
                     @if (session('mensaje'))
-                        <div class="bg-green-500 p-2 rounded-lg mb-6 text-white text-center uppercase font-bold" >
+                        <div class="bg-green-500 p-2 rounded-lg mb-6 text-white text-center uppercase font-bold">
                             {{ session('mensaje') }}
                         </div>
                     @endif
@@ -60,19 +71,18 @@
                         </p>
                         @foreach ($post->comments as $comment)
                             <div class="p-5 border-gray-300 border-b">
-                                <a href="{{ route('post.index', $comment->user) }}" class="mb-2 block text-gray-500 font-bold">
+                                <a href="{{ route('post.index', $comment->user) }}"
+                                    class="mb-2 block text-gray-500 font-bold">
                                     {{ $comment->user->username }}
                                 </a>
                                 <p>{{ $comment->comment }}</p>
                                 <p class="text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</p>
                             </div>
                         @endforeach
-
                     @else
                         <p class="p-10 text-center">
                             No hay comentarios aún
                         </p>
-
                     @endif
                 </div>
             </div>
