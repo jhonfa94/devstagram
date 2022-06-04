@@ -1,15 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\FollowerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +22,12 @@ use App\Http\Controllers\FollowerController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/', function () {
+//     // return view('welcome');
+//     return view('principal');
+// });
 
-Route::get('/', function () {
-    // return view('welcome');
-    return view('principal');
-});
+Route::get('/', HomeController::class)->name('home');
 
 // Rutas para el perfil
 Route::get('/editar-perfil', [PerfilController::class, 'index'])->name('perfil.index');
@@ -59,3 +61,4 @@ Route::delete('/post/{post}/likes', [LikeController::class, 'destroy'])->name('p
 //SIGUIENDO USUARIOS
 Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
 Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');
+
