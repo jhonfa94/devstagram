@@ -54,8 +54,8 @@ Route::post('/{user:username}/post/{post}', [CommentController::class, 'store'])
 Route::post('/imagenes', [ImageController::class, 'store'])->name('imagenes.store');
 
 //like photos
-Route::post('/post/{post}/likes', [LikeController::class, 'store'])->name('post.likes.store');
-Route::delete('/post/{post}/likes', [LikeController::class, 'destroy'])->name('post.likes.destroy');
+// Route::post('/post/{post}/likes', [LikeController::class, 'store'])->name('post.likes.store');
+// Route::delete('/post/{post}/likes', [LikeController::class, 'destroy'])->name('post.likes.destroy');
 
 
 //SIGUIENDO USUARIOS

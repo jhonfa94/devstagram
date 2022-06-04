@@ -8,6 +8,8 @@
     <title>Devstagram - @yield('titulo')</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+    @livewireStyles
+
 
     <script src="{{ mix('js/app.js') }}" defer></script>
 
@@ -68,7 +70,7 @@
         &copy; Devstagram - Todos los derechos reservados
         {{ date('Y') }}
     </footer>
-
+    @livewireScripts
 </body>
 
 </html>

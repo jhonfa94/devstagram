@@ -13,7 +13,7 @@ class LikeController extends Controller
     {
         // dd($post->id);
         // Like::create(['user_id' => auth()->id(), 'post_id' => $post->id]);
-        $post->likes()->create(['user_id' => auth()->id()]);
+        $post->likes()->create(['user_id' => auth()->user()->id]);
         return back();
     }
 
