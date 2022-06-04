@@ -9,6 +9,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\FollowerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +54,8 @@ Route::post('/imagenes', [ImageController::class, 'store'])->name('imagenes.stor
 //like photos
 Route::post('/post/{post}/likes', [LikeController::class, 'store'])->name('post.likes.store');
 Route::delete('/post/{post}/likes', [LikeController::class, 'destroy'])->name('post.likes.destroy');
+
+
+//SIGUIENDO USUARIOS
+Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
+Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');
